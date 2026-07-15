@@ -10,6 +10,6 @@ namespace SalesCET108.Web.Data
         {
         }
 
-        public DbSet<Product> Products { get; set; } = null!;
+        public DbSet<Product> Products { get; set; }
     }
 }
