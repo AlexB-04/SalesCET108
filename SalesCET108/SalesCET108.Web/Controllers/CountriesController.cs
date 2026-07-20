@@ -63,17 +63,10 @@ namespace SalesCET108.Web.Controllers
 
             if (ModelState.IsValid)
             {
-                try
-                {
-                    _context.Add(country);
-                    await _context.SaveChangesAsync();
+                _context.Add(country);
+                await _context.SaveChangesAsync();
 
-                    return RedirectToAction(nameof(Index));
-                }
-                catch (DbUpdateException)
-                {
-                    ModelState.AddModelError("Name", "Este país já existe.");
-                }
+                return RedirectToAction(nameof(Index));
             }
 
             return View(country);
@@ -135,13 +128,9 @@ namespace SalesCET108.Web.Controllers
                     }
                 }
 
-                catch (DbUpdateException)
-                {
-                    ModelState.AddModelError("Name", "Este país já existe.");
-                    return View(country);
-                }
                 return RedirectToAction(nameof(Index));
             }
+
             return View(country);
         }
 
