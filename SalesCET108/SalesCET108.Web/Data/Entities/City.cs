@@ -2,23 +2,17 @@
 
 namespace SalesCET108.Web.Data.Entities
 {
-    public class Country
+    public class City
     {
         public int Id { get; set; }
 
-        [Display(Name = "País")]
+        [Display(Name = "Cidade")]
         [MaxLength(50, ErrorMessage = "O campo {0} deve ter no máximo {1} caracteres!")]
         [Required(ErrorMessage = "O Campo {0} é obrigatório!")]
         public string? Name { get; set; }
 
-        public ICollection<State> States { get; set; }
+        public int StateId { get; set; }
 
-        public int StatesNumber
-        {
-            get
-            {
-                return States == null ? 0 : States.Count;
-            }
-        }
+        public State? State { get; set; }
     }
 }
