@@ -17,5 +17,18 @@ namespace SalesCET108.Web.Data
         public DbSet<State> States { get; set; }
 
         public DbSet<City> Cities { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<State>()
+                .HasIndex(s => new { s.Name, s.CountryId })
+                .IsUnique();
+
+            modelBuilder.Entity<City>()
+                .HasIndex(c => new { c.Name, c.StateId })
+                .IsUnique();
+
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }
